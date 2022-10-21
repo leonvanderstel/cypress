@@ -13,8 +13,11 @@ import {
  * import { mount } from 'cypress/lit-element'
  *
  * it('should render', () => {
- *   mount(Counter, { props: { count: 42 } })
- *   cy.get('button').contains(42)
+ *        mount(LitTestComponent)
+ *
+ *         cy.get('lit-test-component')
+ *             .shadow()
+ *             .find('[test=counter]').should('have.text', 1)
  * })
  */
 
