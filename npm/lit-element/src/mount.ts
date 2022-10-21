@@ -9,7 +9,7 @@ import {
  * @returns Cypress.Chainable<MountReturn>
  *
  * @example
- * import Counter from './Counter.ts'
+ * import Counter from './example/LitTestComponent.ts'
  * import { mount } from 'cypress/lit-element'
  *
  * it('should render', () => {
@@ -17,7 +17,7 @@ import {
  *
  *         cy.get('lit-test-component')
  *             .shadow()
- *             .find('[test=counter]').should('have.text', 1)
+ *             .find('[test=counter]').should('have.text', 0)
  * })
  */
 
@@ -37,8 +37,6 @@ export function mount<T extends Constructor<HTMLElement>>(
     // Creating an unregistered element will throw, so first we try to create an instance as is
     // but if that fails we have to register the component first.
     instance = Object.assign(new component() as InstanceType<T>, properties ?? {});
-
-    console.log(instance);
   } catch (_) {
     // Register unregistered element
     customElements.define(`test-mount-${randomID(10)}`, component);
